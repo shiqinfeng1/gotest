@@ -12,6 +12,8 @@ type Addr struct {
 	BackupIPv6 net.IP
 	NetID      string
 }
-type Repo interface {
-	UpdateConnectV3(ctx context.Context, updateFn func(ctx context.Context, tr *ConnectionV3) (*ConnectionV3, error)) error
+type RepoV3 interface {
+	UpdateConnect(ctx context.Context, updateFn func(ctx context.Context, tr *ConnectionV3) (*ConnectionV3, error)) error
+	SaveConnect(ctx context.Context, saveFn func(ctx context.Context) (*ConnectionV3, error)) error
+	GetConnect(ctx context.Context) (*ConnectionV3, error)
 }
